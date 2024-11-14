@@ -1,0 +1,32 @@
+.sidebar {
+    height: 100vh;
+    width: var(--sidebar-width);
+    background: var(--bg-inverted-color);
+
+    transition: width 0.8s;
+    position: relative;
+}
+.collapsed {
+    width: 80px;
+}
+
+.links {
+    margin-left: auto;
+    display: flex;
+}
+
+.mainLink {
+    margin-right: 15px;
+}
+
+.switchers {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.lang {
+    margin-left: 20px;
+}
