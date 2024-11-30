@@ -9,7 +9,7 @@ export default ({
     paths,
     isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
-    return [
+    const plugins = [
         new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({
             template: paths.html,
@@ -21,8 +21,15 @@ export default ({
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
         }),
-        new webpack.HotModuleReplacementPlugin(),
+
         new ReactRefreshWebpackPlugin(),
         new BundleAnalyzerPlugin(),
     ];
+
+    if (isDev) {
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new BundleAnalyzerPlugin());
+    }
+
+    return plugins;
 };
